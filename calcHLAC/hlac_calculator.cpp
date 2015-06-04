@@ -5,9 +5,10 @@ using namespace cv;
 
 
 
-HLACCalculator::HLACCalculator(std::string input_path, std::shared_ptr<std::vector<cv::Rect>> calc_point)
+HLACCalculator::HLACCalculator(std::string input_path, std::shared_ptr<std::vector<cv::Rect>> calc_area)
 {
-
+	this->calc_area = calc_area;
+	this->input_path = input_path;
 }
 
 

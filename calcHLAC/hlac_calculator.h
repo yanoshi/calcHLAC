@@ -12,9 +12,13 @@
 class HLACCalculator
 {
 public:
-	HLACCalculator(std::string input_path, std::shared_ptr<std::vector<cv::Rect>> calc_point);
+	HLACCalculator(std::string input_path, std::shared_ptr<std::vector<cv::Rect>> calc_area);
 
 	std::vector<int> get_result();
 	std::string get_result_string();
 	void get_result_file(std::string filepath);
+
+private:
+	std::string input_path;
+	std::shared_ptr<std::vector<cv::Rect>> calc_area;
 };
