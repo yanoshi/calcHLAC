@@ -21,4 +21,6 @@ public:
 private:
 	std::string input_path;
 	std::shared_ptr<std::vector<cv::Rect>> calc_area;
+
+	cv::Mat get_mat_from_file(string filename);
 };
