@@ -8,13 +8,13 @@ using namespace cv;
 HLACCalculator::HLACCalculator(std::string input_path, std::shared_ptr<std::vector<cv::Rect>> calc_area)
 {
 	this->calc_area = calc_area;
-	this->input_path = input_path;
+	this->input_mat = get_mat_from_file(input_path);
 }
 
 
-std::vector<int> HLACCalculator::get_result()
+std::vector<std::pair<cv::Rect,std::vector<int>>> HLACCalculator::get_result()
 {
-	
+	vector<pair<Rect,std::vector<int>>> features(calc_area->size());
 }
 
 
