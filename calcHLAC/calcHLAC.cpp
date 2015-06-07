@@ -22,12 +22,13 @@ int main(int argc, char* argv[])
 		("output,o", value<string>(), "output filepath");
 
 	calc_options.add_options()
-		("calc_area,a", value<vector<string>>(), "set area for HLAC. format:[x,y,w,h x,y,w,h ...]");
+		("calc_area,a", value<vector<string>>(), "set area for HLAC. format:[x,y,w,h x,y,w,h ...]")
+		("step_size,s", value<int>()->default_value(1), "step size for HLAC");
 
 	variables_map cmd_values;
 	string input_src, output_src;
-	std::shared_ptr<vector<Rect>> calc_area;
-	
+	std::shared_ptr<vector<Rect>> calc_area = std::shared_ptr<vector<Rect>>(new vector<Rect>());
+	int step_size;
 
 	try
 	{
@@ -50,6 +51,7 @@ int main(int argc, char* argv[])
 			output_src = cmd_values["output"].as<string>();
 		}
 		
+		step_size = cmd_values["step_size"].as<int>();
 		
 		if (cmd_values.count("calc_area"))
 		{
@@ -81,6 +83,12 @@ int main(int argc, char* argv[])
 		exit(0);
 	}
 
+	HLACCalculator calculator(input_src, calc_area, step_size);
+	cout << calculator.get_result_string();
+
+#ifdef _DEBUG
+	getchar();
+#endif
 
 	return 0;
 }
