@@ -16,7 +16,9 @@ public:
 
 	std::shared_ptr<std::vector<std::pair<cv::Rect, std::vector<int>>>> get_result();
 	std::string get_result_string();
-	void get_result_file(std::string filepath);
+	
+	//–Ê“|‚È‚Ì‚ÅAÀ‘•‚â‚ß‚½
+	//void get_result_file(std::string filepath);
 
 private:
 	cv::Mat input_mat;
