@@ -150,11 +150,13 @@ std::string HLACCalculator::get_result_string()
 }
 
 
-
+/*
 void HLACCalculator::get_result_file(std::string filepath)
 {
 	
 }
+*/
+
 
 Mat HLACCalculator::get_mat_from_file(std::string filename)
 {

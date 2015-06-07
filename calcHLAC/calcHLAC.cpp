@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 	}
 
 	HLACCalculator calculator(input_src, calc_area, step_size);
-	cout << calculator.get_result_string();
+	cout << calculator.get_result_string() << endl;
 
 #ifdef _DEBUG
 	getchar();
