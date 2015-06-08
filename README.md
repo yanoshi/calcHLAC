@@ -14,13 +14,13 @@
 
 
 ## コマンドラインオプション
-### --input <string>
+### --input \<string\>
 入力ファイル名を指定
 
 `-i`でも可能
 
 
-### --calc_area <int>,<int>,<int>,<int> 
+### --calc_area \<int\>,\<int\>,\<int\>,\<int\> 
 指定した領域のHLACを計算する。未指定なら画像全体のHLACを演算する。
 
 `x,y,width,height` のフォーマットで指定する
@@ -30,7 +30,7 @@
 `-a`でも可能
 
 
-### --step_size <int>
+### --step_size \<int\>
 HLAC演算時のステップサイズを指定する。未指定なら`1`
 
 
