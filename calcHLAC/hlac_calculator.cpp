@@ -13,7 +13,19 @@ HLACCalculator::HLACCalculator(std::string input_path, std::shared_ptr<std::vect
 	Mat origin_img = get_mat_from_file(input_path);
 	origin_img.convertTo(origin_img, CV_8UC1);
 
-	this->calc_area = calc_area;
+
+	if (calc_area->size() == 0)
+	{
+		this->calc_area = std::shared_ptr<vector<Rect>>(new vector<Rect>());
+		this->calc_area->push_back(cv::Rect(
+			0,
+			0,
+			origin_img.size().width,
+			origin_img.size().height
+			));
+		
+	}
+	
 	this->input_mat = Mat(origin_img.size().width, origin_img.size().height, CV_8UC1);
 	cv::threshold(origin_img, this->input_mat, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 	this->step_size = step_size;

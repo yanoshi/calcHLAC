@@ -18,15 +18,15 @@ int main(int argc, char* argv[])
 	options_description calc_options("calculation option");
 
 	inout_options.add_options()
-		("input,i", value<string>(), "input filepath")
-		("output,o", value<string>(), "output filepath");
+		("input,i", value<string>(), "input filepath");
+		//("output,o", value<string>(), "output filepath");
 
 	calc_options.add_options()
 		("calc_area,a", value<vector<string>>(), "set area for HLAC. format:[x,y,w,h x,y,w,h ...]")
 		("step_size,s", value<int>()->default_value(1), "step size for HLAC");
 
 	variables_map cmd_values;
-	string input_src, output_src;
+	string input_src /*, output_src*/ ;
 	std::shared_ptr<vector<Rect>> calc_area = std::shared_ptr<vector<Rect>>(new vector<Rect>());
 	int step_size;
 
@@ -40,15 +40,15 @@ int main(int argc, char* argv[])
 		notify(cmd_values);
 
 
-		if (!(cmd_values.count("input") && cmd_values.count("output")))
+		if (!(cmd_values.count("input")/* && cmd_values.count("output")*/))
 		{
-			cout << option_marged << endl;
+			std::cout << option_marged << endl;
 			exit(0);
 		}
 		else
 		{
 			input_src = cmd_values["input"].as<string>();
-			output_src = cmd_values["output"].as<string>();
+			/*output_src = cmd_values["output"].as<string>();*/
 		}
 		
 		step_size = cmd_values["step_size"].as<int>();
@@ -70,21 +70,16 @@ int main(int argc, char* argv[])
 					));
 			}
 		}
-		else
-		{
-			cout << calc_options << endl;
-			exit(0);
-		}
 
 	}
 	catch (exception &e)
 	{
-		cout << e.what() << endl;
+		std::cout << e.what() << endl;
 		exit(0);
 	}
 
 	HLACCalculator calculator(input_src, calc_area, step_size);
-	cout << calculator.get_result_string() << endl;
+	std::cout << calculator.get_result_string() << endl;
 
 #ifdef _DEBUG
 	getchar();
